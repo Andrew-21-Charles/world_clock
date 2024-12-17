@@ -1,0 +1,302 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family:'Poppins',sans-serif;
+    box-sizing: border-box;
+}
+
+
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .card {
+    width: 90%;
+    max-width: 700px;
+    background: linear-gradient(135deg, #80adcb, #4d7bb6, #1914a0, #000000);
+    color: #fff;
+    margin: 100px auto 0;
+    border-radius: 20px;
+    padding: 40px 35px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .card1 {
+    width: 90%;
+    max-width: 700px;
+    background: linear-gradient(135deg, #80adcb, #4d7bb6, #1914a0, #000000);
+    color: #fff;
+    border-radius: 20px;
+    padding: 40px 35px;
+    text-align: center;
+  }
+  
+
+.flag-icon{
+    width: 100px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+:root {
+    --primary-color: #242526;
+    --white-color: #18191a;
+    --black-color: #fff;
+    --red-color: #e74c3c;}
+  body {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-color);
+  }
+ 
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+  }
+  .container .clock {
+    display: flex;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    background: var(--white-color);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1), 0 25px 45px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+
+  .clock label {
+    position: absolute;
+    inset: 5px;
+    text-align: center;
+    transform: rotate(calc(var(--i) * (360deg / 12)));
+  }
+  .clock label span {
+    
+    text-shadow: 0px 0px 12px rgba(17, 240, 195, 0.807);
+    font-family: 'Orbitron', sans-serif;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--black-color);
+    transform: rotate(calc(var(--i) * (-360deg / 12)));
+  }
+  .container .indicator {
+    position: absolute;
+    height: 5px;
+    width: 5px;
+    display: flex;
+    justify-content: center;
+  }
+  .indicator::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    z-index: 100;
+    background: var(--black-color);
+    border: 4px solid var(--red-color);
+  }
+  .indicator .hand {
+    position: absolute;
+    height: 75px;
+    width: 4px;
+    bottom: 0;
+    border-radius: 25px;
+    transform-origin: bottom;
+    background: var(--red-color);
+  }
+  .hand.minute {
+    height: 70px;
+    width: 5px;
+    background: var(--black-color);
+  }
+  .hand.hour {
+    height: 50px;
+    width: 7px;
+    background: var(--black-color);
+  }
+  
+  
+.search{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.search input{
+    border: 0;
+    outline: 0;
+    background: #ebfffc;
+    color: #555;
+    padding: 10px 25px;
+    height: 60px;
+    border-radius: 32px;
+    flex: 1;
+    margin-right: 16px;
+    font-size: 18px;
+}
+.search button{
+    border: 0;
+    outline: 0;
+    background: #ebfffc;
+    border-radius: 50%;
+    width: 80px;
+    height: 40px;
+    cursor: pointer;
+}
+.search button img{
+    width: 20px;
+}
+/* Digital clock styling with a futuristic, scenic look */
+.digital-clock {
+    font-family: 'Orbitron', sans-serif; /* Use a digital-looking font */
+    font-size: 2.0rem;
+    font-weight: 600;
+    color: #0ff;
+    text-align: center;
+    margin-top: -25px;
+    padding: 10px 20px;
+    border-radius: 15px;
+    background: linear-gradient(145deg, #1a1a1a, #333333); /* Dark, sleek background */
+    box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.5), 4px 4px 15px rgba(0, 255, 255, 0.5);
+    text-shadow: 0px 0px 8px rgba(0, 255, 255, 0.8); /* Glowing text effect */
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Optional animation for a subtle pulsing glow */
+  @keyframes glow {
+    0%, 100% {
+      text-shadow: 0px 0px 8px rgba(0, 255, 255, 0.8);
+    }
+    50% {
+      text-shadow: 0px 0px 15px rgba(0, 255, 255, 1);
+    }
+  }
+  
+  .digital-clock span {
+    animation: glow 2s infinite alternate; /* Pulsing glow effect */
+  }
+  .container1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    
+  }
+  .flag-icon1{
+    width: 100px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+  .container1 .clock1 {
+    display: flex;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    background: var(--white-color);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1), 0 25px 45px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+
+  .clock1 label {
+    position: absolute;
+    inset: 5px;
+    text-align: center;
+    transform: rotate(calc(var(--i) * (360deg / 12)));
+  }
+  .clock1 label span {
+    
+    text-shadow: 0px 0px 12px rgba(17, 240, 195, 0.807);
+    font-family: 'Orbitron', sans-serif;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--black-color);
+    transform: rotate(calc(var(--i) * (-360deg / 12)));
+  }
+  .container1 .indicator1 {
+    position: absolute;
+    height: 5px;
+    width: 5px;
+    display: flex;
+    justify-content: center;
+  }
+  .indicator1::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    z-index: 100;
+    background: var(--black-color);
+    border: 4px solid var(--red-color);
+  }
+  .indicator1 .hand {
+    position: absolute;
+    height: 75px;
+    width: 4px;
+    bottom: 0;
+    border-radius: 25px;
+    transform-origin: bottom;
+    background: var(--red-color);
+  }
+  .hand.minute1 {
+    height: 70px;
+    width: 5px;
+    background: var(--black-color);
+  }
+  .hand.hour1 {
+    height: 50px;
+    width: 7px;
+    background: var(--black-color);
+  }
+  .digital-clock1 {
+    font-family: 'Orbitron', sans-serif; /* Use a digital-looking font */
+    font-size: 2.0rem;
+    font-weight: 600;
+    color: #0ff;
+    text-align: center;
+    margin-top: -25px;
+    padding: 10px 20px;
+    border-radius: 15px;
+    background: linear-gradient(145deg, #1a1a1a, #333333); /* Dark, sleek background */
+    box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.5), 4px 4px 15px rgba(0, 255, 255, 0.5);
+    text-shadow: 0px 0px 8px rgba(0, 255, 255, 0.8); /* Glowing text effect */
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Optional animation for a subtle pulsing glow */
+  @keyframes glow {
+    0%, 100% {
+      text-shadow: 0px 0px 8px rgba(0, 255, 255, 0.8);
+    }
+    50% {
+      text-shadow: 0px 0px 15px rgba(0, 255, 255, 1);
+    }
+  }
+  
+  .digital-clock1 span {
+    animation: glow 2s infinite alternate; /* Pulsing glow effect */
+  }
+  .display{
+    display: none;
+    margin-left: 100;
+  }

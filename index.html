@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>World Clock</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+   
+  </head>
+  <body>
+    <div class="wrapper">
+    <div class="card">
+        <div class="">
+            
+            <h2 class="city">Your Country </h2>
+            <img src="" alt="Country flag"class="flag-icon">
+        </div>
+    <div class="container">
+      <div class="clock">
+        <label style="--i: 1"><span>1</span></label>
+        <label style="--i: 2"><span>2</span></label>
+        <label style="--i: 3"><span>3</span></label>
+        <label style="--i: 4"><span>4</span></label>
+        <label style="--i: 5"><span>5</span></label>
+        <label style="--i: 6"><span>6</span></label>
+        <label style="--i: 7"><span>7</span></label>
+        <label style="--i: 8"><span>8</span></label>
+        <label style="--i: 9"><span>9</span></label>
+        <label style="--i: 10"><span>10</span></label>
+        <label style="--i: 11"><span>11</span></label>
+        <label style="--i: 12"><span>12</span></label>
+
+        <div class="indicator">
+          <span class="hand hour"></span>
+          <span class="hand minute"></span>
+          <span class="hand second"></span>
+        </div>
+      </div>
+        <!-- Digital Clock Display -->
+        <div class="digital-clock" id="digitalClock"></div>
+      
+    </div>
+    
+    
+</div>
+<!-- search -->
+<div class="card1">
+        <div class="search">
+           <input type="text" placeholder="enter country to check time" spellcheck="false"> 
+           <button><img src="search.png" ></button>
+        </div>
+        <h2 class="country">country</h2>
+            <img src="" alt="flag" class="flag-icon1">
+            <div class="display">
+            <div class="container1">
+                <div class="clock1">
+                  <label style="--i: 1"><span>1</span></label>
+                  <label style="--i: 2"><span>2</span></label>
+                  <label style="--i: 3"><span>3</span></label>
+                  <label style="--i: 4"><span>4</span></label>
+                  <label style="--i: 5"><span>5</span></label>
+                  <label style="--i: 6"><span>6</span></label>
+                  <label style="--i: 7"><span>7</span></label>
+                  <label style="--i: 8"><span>8</span></label>
+                  <label style="--i: 9"><span>9</span></label>
+                  <label style="--i: 10"><span>10</span></label>
+                  <label style="--i: 11"><span>11</span></label>
+                  <label style="--i: 12"><span>12</span></label>
+          
+                  <div class="indicator1">
+                    <span class="hand hour1"></span>
+                    <span class="hand minute1"></span>
+                    <span class="hand second1"></span>
+                  </div>
+                </div>
+                  <!-- Digital Clock Display -->
+                  <div class="digital-clock1" id="digitalClock1"></div>
+                
+              </div> 
+</div>
+
+
+</div></div>
+
+
+
+
+
+
+
+    <script>
+        const apiKey = "2e4bae6210284cfe9cdaeb0af833d052";
+        const apiUrlc = "https://api.ipgeolocation.io/ipgeo?apiKey=";
+      
+        const hourHand = document.querySelector(".hour");
+        const minuteHand = document.querySelector(".minute");
+        const secondHand = document.querySelector(".second");
+        const flagIcon = document.querySelector(".flag-icon");
+      
+        async function updateTime() {
+          const response = await fetch(apiUrlc + "e1706f76231b4ffab12ec8cee2f18b96");
+          const data = await response.json();
+      
+          var ip =data.ip;
+          console.log(ip);
+          const response2 = await fetch("https://timeapi.io/api/time/current/ip?ipAddress=" + ip);
+         var data2 =await response2.json();
+
+         
+         
+         var flag =data.country_flag;
+          flagIcon.src = flag;
+   
+         
+         document.querySelector(".city").innerHTML = data.country_name;
+          //const timestamp = data.time_zone.current_time;
+          //const date = new Date(timestamp);
+          console.log(data2);
+          let hours = data2.hour;//date.getHours();
+          let minutes = data2.minute;//date.getMinutes();
+          let seconds = data2.seconds//date.getSeconds();
+      
+          updateClockHands(hours, minutes, seconds);
+      
+          // Increment the time and update clock hands every second
+          setInterval(() => {
+            ({ hours, minutes, seconds } = updateTime1(hours, minutes, seconds));
+            updateClockHands(hours, minutes, seconds);
+          }, 1000);
+        }
+      
+        function updateTime1(hours, minutes, seconds) {
+          seconds++;
+          if (seconds === 60) {
+            seconds = 0;
+            minutes++;
+          }
+          if (minutes === 60) {
+            minutes = 0;
+            hours = (hours + 1) % 24;
+          }
+          return { hours, minutes, seconds };
+        }
+      
+        function updateClockHands(hours, minutes, seconds) {
+          // Calculate rotation for each hand
+          const secToDeg = (seconds / 60) * 360;
+          const minToDeg = (minutes / 60) * 360;
+          const hrToDeg = (hours / 12) * 360;
+      
+          // Rotate the clock hands
+          secondHand.style.transform = `rotate(${secToDeg}deg)`;
+          minuteHand.style.transform = `rotate(${minToDeg}deg)`;
+          hourHand.style.transform = `rotate(${hrToDeg}deg)`;
+
+          // Update the digital clock display
+        digitalClock.textContent = `${hours.toString().padStart(2, '0')}:${minutes
+          .toString()
+          .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+      
+        // Call updateTime on page load
+        updateTime();
+      </script>
+      
+
+      <script>
+        
+         
+        const apiKey1 = "2e4bae6210284cfe9cdaeb0af833d052";
+        const apiUrl = "https://api.ipgeolocation.io/timezone?apiKey=e1706f76231b4ffab12ec8cee2f18b96&location=";
+         
+        const searchBox = document.querySelector(".search input");
+  
+        const searchBtn = document.querySelector(".search button");
+        const hourHand1 = document.querySelector(".hour1");
+        const minuteHand1= document.querySelector(".minute1");
+        const secondHand1 = document.querySelector(".second1");
+        const flagIcon1 = document.querySelector(".flag-icon1");
+      
+        let intervalId = null; // Store the interval ID globally
+
+async function updateTime2(country1) {
+  // Clear any previous interval before starting a new one
+  if (intervalId) {
+    clearInterval(intervalId);
+    intervalId = null;
+  }
+
+  const response3 = await fetch(apiUrl + country1);
+  const data1 = await response3.json();
+  
+  console.log(country1);
+  const response4 = await fetch("https://restcountries.com/v3.1/name/"+country1);
+         var data4 =await response4.json();
+         console.log(data4);
+         var flag1 = data4[0].flags.png;
+          flagIcon1.src = flag1;
+
+  document.querySelector(".country").innerHTML = data1.geo.country;
+  
+  console.log(data1);
+  const time = data1.time_24;
+  console.log(time);
+  //document.querySelector(".display").style.display ="flex";
+  document.querySelector(".display").style.display = "flex";
+document.querySelector(".display").style.justifyContent = "center"; // Center horizontally
+document.querySelector(".display").style.alignItems = "center";  
+
+  const [hours, minutes, seconds] = time.split(":");
+  let hours1 = parseInt(hours, 10);
+  let minutes1 = parseInt(minutes, 10);
+  let seconds1 = parseInt(seconds, 10);
+
+  updateClockHands1(hours1, minutes1, seconds1);
+
+  // Increment the time and update clock hands every second
+  intervalId = setInterval(() => {
+    ({ hours1, minutes1, seconds1 } = updateTime12(hours1, minutes1, seconds1));
+    updateClockHands1(hours1, minutes1, seconds1);
+  }, 1000);
+}
+
+function updateTime12(hours1, minutes1, seconds1) {
+  seconds1++;
+  if (seconds1 === 60) {
+    seconds1 = 0;
+    minutes1++;
+  }
+  if (minutes1 === 60) {
+    minutes1 = 0;
+    hours1 = (hours1 + 1) % 24;
+  }
+  return { hours1, minutes1, seconds1 };
+}
+
+function updateClockHands1(hours1, minutes1, seconds1) {
+  // Calculate rotation for each hand
+  const secToDeg1 = (seconds1 / 60) * 360;
+  const minToDeg1 = (minutes1 / 60) * 360;
+  const hrToDeg1 = (hours1 / 12) * 360;
+
+  // Rotate the clock hands
+  secondHand1.style.transform = `rotate(${secToDeg1}deg)`;
+  minuteHand1.style.transform = `rotate(${minToDeg1}deg)`;
+  hourHand1.style.transform = `rotate(${hrToDeg1}deg)`;
+
+  // Update the digital clock display
+  digitalClock1.textContent = `${hours1.toString().padStart(2, '0')}:${minutes1
+    .toString()
+    .padStart(2, '0')}:${seconds1.toString().padStart(2, '0')}`;
+}
+
+// Add event listener to the search button
+searchBtn.addEventListener("click", () => {
+  updateTime2(searchBox.value);
+});
+
+      </script>
+  </body>
+</html>
